@@ -4,7 +4,6 @@ import "swiper/css";
 import Main from "./components/layout/Main";
 import HomePage from "./pages/HomePage";
 import Banner from "./components/banner/Banner";
-import MoviePage from "./pages/MoviePage";
 
 const App = () => {
   return (
@@ -20,7 +19,6 @@ const App = () => {
               </>
             }
           ></Route>
-          <Route path="/movies" element={<MoviePage></MoviePage>}></Route>
         </Route>
       </Routes>
     </Fragment>

@@ -39,7 +39,7 @@ function BannerItem({ item }) {
         <h2 className="mb-5 text-3xl font-bold">{title}</h2>
         <div className="flex items-center mb-8 gap-x-3 ">
           <span className="px-4 py-2 border border-white rounded-md">
-            Action
+            Action item
           </span>
           <span className="px-4 py-2 border border-white rounded-md">
             Adventure

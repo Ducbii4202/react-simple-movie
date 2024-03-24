@@ -23,9 +23,7 @@ const Banner = () => {
   );
 };
 
-// eslint-disable-next-line react/prop-types
 function BannerItem({ item }) {
-  // eslint-disable-next-line react/prop-types
   const { title, poster_path } = item;
   return (
     <div className="relative w-full h-full rounded-lg">
