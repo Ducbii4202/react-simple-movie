@@ -10,16 +10,16 @@ const MoviePage = () => {
   );
   const movies = data?.results || [];
   return (
-    <div className="py-10 page-container">
-      <div className="flex mb-10">
+    <div className="py-10 ">
+      <div className="flex">
         <div className="flex-1">
           <input
             type="text"
-            className="w-full p-4 font-medium text-white outline-none bg-slate-800"
-            placeholder="Type here to search ..."
+            className="w-full"
+            placeholder="Type here to search..."
           />
         </div>
-        <button className="p-4 text-white bg-primary">
+        <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

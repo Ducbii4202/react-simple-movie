@@ -15,7 +15,7 @@ const MoviePage = () => {
         <div className="flex-1">
           <input
             type="text"
-            className="w-full p-4 font-medium text-white outline-none bg-slate-800"
+            className="w-full p-4 font-medium bg-transparent"
             placeholder="Type here to search ..."
           />
         </div>
