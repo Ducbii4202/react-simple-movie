@@ -52,7 +52,6 @@ const MovieDetailPage = () => {
         {overview}
       </p>
       <MovieCredits></MovieCredits>
-      <MovieVideos></MovieVideos>
     </div>
   );
 };
@@ -69,7 +68,7 @@ function MovieCredits() {
   const { cast } = data;
   if (!cast || cast.length <= 0) return null;
   return (
-    <div className="py-10">
+    <>
       <h2 className="mb-10 text-3xl text-center">Casts</h2>
       <div className="grid grid-cols-4 gap-5">
         {cast.slice(0, 4).map((item) => (
@@ -83,7 +82,7 @@ function MovieCredits() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

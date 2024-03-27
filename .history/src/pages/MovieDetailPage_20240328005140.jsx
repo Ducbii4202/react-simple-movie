@@ -32,7 +32,7 @@ const MovieDetailPage = () => {
           alt=""
         />
       </div>
-      <h1 className="mb-10 text-4xl font-bold text-center text-primary">
+      <h1 className="mb-10 text-3xl font-bold text-center text-primary">
         {title}
       </h1>
 
@@ -52,7 +52,6 @@ const MovieDetailPage = () => {
         {overview}
       </p>
       <MovieCredits></MovieCredits>
-      <MovieVideos></MovieVideos>
     </div>
   );
 };
@@ -69,8 +68,8 @@ function MovieCredits() {
   const { cast } = data;
   if (!cast || cast.length <= 0) return null;
   return (
-    <div className="py-10">
-      <h2 className="mb-10 text-3xl text-center">Casts</h2>
+    <>
+      <h2 className="mb-10 text-2xl text-center">Casts</h2>
       <div className="grid grid-cols-4 gap-5">
         {cast.slice(0, 4).map((item) => (
           <div className="cast-item" key={item.id}>
@@ -79,23 +78,11 @@ function MovieCredits() {
               alt=""
               className="w-full h-[350px] object-cover rounded-lg mb-3"
             />
-            <h3 className="text-xl font-medium text-center">{item.name}</h3>
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
-}
-
-function MovieVideos() {
-  const { movieId } = useParams();
-  const { data } = useSWR(
-    `
-    https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`,
-    fetcher
-  );
-  if (!data) return null;
-  return <div></div>;
 }
 
 export default MovieDetailPage;
