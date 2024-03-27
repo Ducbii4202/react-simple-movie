@@ -11,9 +11,9 @@ const MovieDetailPage = () => {
     fetcher
   );
   if (!data) return null;
-  const { backdrop_path, poster_path, title, genres, overview } = data;
+  const { backdrop_path, poster_path, title, genres } = data;
   return (
-    <div className="py-10">
+    <>
       <div className="w-full h-[600px] relative ">
         <div className="absolute inset-0 bg-black bg-opacity-70 rounded-3xl"></div>
 
@@ -36,21 +36,9 @@ const MovieDetailPage = () => {
       </h1>
 
       {genres.length > 0 && (
-        <div className="flex items-center justify-center mb-10 gap-x-5">
-          {genres.map((item) => (
-            <span
-              key={item.id}
-              className="px-4 py-2 border rounded border-primary text-primary"
-            >
-              {item.name}
-            </span>
-          ))}
-        </div>
+        <div className="flex items-center mb-10 gap-x-5"></div>
       )}
-      <p className="leading-relaxed text-center max-w-[600px] mx-auto">
-        {overview}
-      </p>
-    </div>
+    </>
   );
 };
 

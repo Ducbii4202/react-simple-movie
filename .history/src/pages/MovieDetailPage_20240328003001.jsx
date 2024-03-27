@@ -13,7 +13,7 @@ const MovieDetailPage = () => {
   if (!data) return null;
   const { backdrop_path, poster_path, title, genres, overview } = data;
   return (
-    <div className="py-10">
+    <>
       <div className="w-full h-[600px] relative ">
         <div className="absolute inset-0 bg-black bg-opacity-70 rounded-3xl"></div>
 
@@ -47,10 +47,8 @@ const MovieDetailPage = () => {
           ))}
         </div>
       )}
-      <p className="leading-relaxed text-center max-w-[600px] mx-auto">
-        {overview}
-      </p>
-    </div>
+      <p className="leading-relaxed text-center">{overview}</p>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const MovieCard = ({ item }) => {
   // eslint-disable-next-line react/prop-types
   const { title, vote_average, release_date, poster_path, id } = item;
-
+  console.log("item: ", item);
   const navigate = useNavigate();
   return (
     <div className="flex flex-col h-full p-3 text-white rounded-lg select-none movie-cart bg-slate-800">

@@ -5,6 +5,7 @@ import Main from "./components/layout/Main";
 import HomePage from "./pages/HomePage";
 import Banner from "./components/banner/Banner";
 import MoviePage from "./pages/MoviePage";
+
 import MovieDetailPage from "./pages/MovieDetailPage";
 
 const App = () => {

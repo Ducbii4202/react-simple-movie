@@ -5,7 +5,7 @@ import Main from "./components/layout/Main";
 import HomePage from "./pages/HomePage";
 import Banner from "./components/banner/Banner";
 import MoviePage from "./pages/MoviePage";
-import MovieDetailPage from "./pages/MovieDetailPage";
+import MoiveDetailPage from "./pages/MoiveDetailPage";
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/movies" element={<MoviePage></MoviePage>}></Route>
           <Route
             path="/movie/:movieId"
-            element={<MovieDetailPage></MovieDetailPage>}
+            element={<MoiveDetailPage></MoiveDetailPage>}
           ></Route>
         </Route>
       </Routes>
