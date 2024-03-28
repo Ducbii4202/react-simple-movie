@@ -2,8 +2,6 @@
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { apiKey, fetcher } from "../config";
-import { SwiperSlide, Swiper } from "swiper/react";
-import MovieCard from "../components/movie/MovieCard";
 //https://api.themoviedb.org/3/collection/
 
 const MovieDetailPage = () => {
@@ -55,7 +53,6 @@ const MovieDetailPage = () => {
       </p>
       <MovieCredits></MovieCredits>
       <MovieVideos></MovieVideos>
-      <MovieSimilar></MovieSimilar>
     </div>
   );
 };
@@ -105,7 +102,7 @@ function MovieVideos() {
       <div className="flex flex-col gap-10">
         {results.slice(0, 3).map((item) => (
           <div className="" key={item.id}>
-            <h3 className="inline-block p-3 mb-5 text-xl font-medium bg-secondary">
+            <h3 className="p-3 mb-5 text-xl font-medium bg-primary">
               {item.name}
             </h3>
             <div key={item.id} className="w-full aspect-video">
@@ -117,7 +114,7 @@ function MovieVideos() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
+                allowfullscreen
                 className="object-fill w-full h-full"
               ></iframe>
             </div>
@@ -127,31 +124,6 @@ function MovieVideos() {
     </div>
   );
 }
-function MovieSimilar() {
-  const { movieId } = useParams();
-  const { data } = useSWR(
-    `
-    https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`,
-    fetcher
-  );
-  if (!data) return null;
-  const { results } = data;
-  if (!results || results.length <= 0) return null;
-  return (
-    <div className="py-10">
-      <h2 className="mb-10 text-3xl font-medium">Similar Movie</h2>
-      <div className="movie-list">
-        <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
-          {results.length > 0 &&
-            results.map((item) => (
-              <SwiperSlide key={item.id}>
-                <MovieCard item={item}></MovieCard>
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
-    </div>
-  );
-}
+//
 
 export default MovieDetailPage;

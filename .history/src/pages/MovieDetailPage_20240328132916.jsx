@@ -2,8 +2,6 @@
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { apiKey, fetcher } from "../config";
-import { SwiperSlide, Swiper } from "swiper/react";
-import MovieCard from "../components/movie/MovieCard";
 //https://api.themoviedb.org/3/collection/
 
 const MovieDetailPage = () => {
@@ -135,21 +133,10 @@ function MovieSimilar() {
     fetcher
   );
   if (!data) return null;
-  const { results } = data;
-  if (!results || results.length <= 0) return null;
+  console.log("data: ", data);
   return (
     <div className="py-10">
-      <h2 className="mb-10 text-3xl font-medium">Similar Movie</h2>
-      <div className="movie-list">
-        <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
-          {results.length > 0 &&
-            results.map((item) => (
-              <SwiperSlide key={item.id}>
-                <MovieCard item={item}></MovieCard>
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
+      <h className="mb-10 text-3xl font-medium">Similar Movie</h>
     </div>
   );
 }
