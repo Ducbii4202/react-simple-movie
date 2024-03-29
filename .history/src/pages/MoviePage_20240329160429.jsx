@@ -58,12 +58,11 @@ const MoviePage = () => {
           </svg>
         </button>
       </div>
-      {loading && (
-        <div className="w-10 h-10 mx-auto border-4 border-t-4 rounded-full border-primary border-t-transparent animate-spin"></div>
+      {!loading && (
+        <div className="w-10 h-10 border-4 border-t-4 rounded-full border-primary border-t-transparent"></div>
       )}
       <div className="grid grid-cols-4 gap-10">
-        {!loading &&
-          movies.length > 0 &&
+        {movies.length > 0 &&
           movies.map((item) => (
             <MovieCard key={item.id} item={item}></MovieCard>
           ))}
