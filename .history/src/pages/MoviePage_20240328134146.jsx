@@ -2,32 +2,19 @@ import useSWR from "swr";
 
 import { fetcher } from "../config";
 import MovieCard from "../components/movie/MovieCard";
-import { useEffect, useState } from "react";
-import useDebounce from "../hook/useDebounce";
+import { useState } from "react";
 
 //https://api.themoviedb.org/3/search/movie
 
 const MoviePage = () => {
   const [filter, setFilter] = useState("");
-  const [url, setUrl] = useState(
-    "https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0"
-  );
-  const filterDebounce = useDebounce(filter, 500);
   const hanldeFilterChange = (e) => {
     setFilter(e.target.value);
   };
-  const { data } = useSWR(url, fetcher);
-  useEffect(() => {
-    if (filterDebounce) {
-      setUrl(
-        `https://api.themoviedb.org/3/search/movie?api_key=b732faa46cbc35a7c4297401454ffbb0&query=${filterDebounce}`
-      );
-    } else {
-      setUrl(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0`
-      );
-    }
-  }, [filterDebounce]);
+  const { data } = useSWR(
+    `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0`,
+    fetcher
+  );
   const movies = data?.results || [];
   return (
     <div className="py-10 page-container">

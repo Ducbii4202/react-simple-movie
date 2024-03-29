@@ -20,11 +20,7 @@ const MoviePage = () => {
   useEffect(() => {
     if (filterDebounce) {
       setUrl(
-        `https://api.themoviedb.org/3/search/movie?api_key=b732faa46cbc35a7c4297401454ffbb0&query=${filterDebounce}`
-      );
-    } else {
-      setUrl(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0`
+        "https://api.themoviedb.org/3/search/movie?api_key=b732faa46cbc35a7c4297401454ffbb0"
       );
     }
   }, [filterDebounce]);

@@ -24,9 +24,10 @@ const MoviePage = () => {
       );
     } else {
       setUrl(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0`
+        "https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0"
       );
     }
+    setUrl;
   }, [filterDebounce]);
   const movies = data?.results || [];
   return (
