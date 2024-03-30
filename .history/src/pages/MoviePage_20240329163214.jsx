@@ -4,14 +4,10 @@ import { fetcher } from "../config";
 import MovieCard from "../components/movie/MovieCard";
 import { useEffect, useState } from "react";
 import useDebounce from "../hook/useDebounce";
-import ReactPaginate from "react-paginate";
 
 //https://api.themoviedb.org/3/search/movie
 
-const itemsPerPage = 20;
-
 const MoviePage = () => {
-  const [, setItemOffset] = useState(0);
   const [nextPage, setNextPage] = useState(1);
   const [filter, setFilter] = useState("");
   const [url, setUrl] = useState(
@@ -30,19 +26,12 @@ const MoviePage = () => {
       );
     } else {
       setUrl(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0&page=${nextPage}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0`
       );
     }
   }, [filterDebounce, nextPage]);
   const movies = data?.results || [];
-
-  if (!data || !data.total_results) return;
-  const pageCount = Math.ceil(data.total_results / itemsPerPage);
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.total_results;
-    setItemOffset(newOffset);
-    setNextPage(event.selected + 1);
-  };
+  const { page, total_pages } = data;
   return (
     <div className="py-10 page-container">
       <div className="flex mb-10">
@@ -81,17 +70,42 @@ const MoviePage = () => {
             <MovieCard key={item.id} item={item}></MovieCard>
           ))}
       </div>
-      <div className="mt-10">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-          className="pagination"
-        />
+      <div className="flex items-center justify-center mt-10 gap-x-5">
+        <span className="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+            />
+          </svg>
+        </span>
+        <span className="inline-block px-4 py-2 leading-none rounded cursor-pointer bg-slate-500 text-slate-900">
+          1
+        </span>
+        <span className="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </span>
       </div>
     </div>
   );

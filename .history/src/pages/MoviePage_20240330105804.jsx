@@ -8,10 +8,10 @@ import ReactPaginate from "react-paginate";
 
 //https://api.themoviedb.org/3/search/movie
 
+const pageCount = 5;
 const itemsPerPage = 20;
 
 const MoviePage = () => {
-  const [, setItemOffset] = useState(0);
   const [nextPage, setNextPage] = useState(1);
   const [filter, setFilter] = useState("");
   const [url, setUrl] = useState(
@@ -36,13 +36,13 @@ const MoviePage = () => {
   }, [filterDebounce, nextPage]);
   const movies = data?.results || [];
 
-  if (!data || !data.total_results) return;
-  const pageCount = Math.ceil(data.total_results / itemsPerPage);
+  if (!data || !data.total_pages) return;
+  const pageCount = Math.ceil(items.length / itemsPerPage);
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.total_results;
+    const newOffset = (event.selected * itemsPerPage) % data.total_pages;
     setItemOffset(newOffset);
-    setNextPage(event.selected + 1);
   };
+  // const { page, total_pages } = data;
   return (
     <div className="py-10 page-container">
       <div className="flex mb-10">
@@ -90,8 +90,56 @@ const MoviePage = () => {
           pageCount={pageCount}
           previousLabel="< previous"
           renderOnZeroPageCount={null}
-          className="pagination"
         />
+      </div>
+      <div className="flex items-center justify-center hidden mt-10 gap-x-5">
+        <span
+          className="cursor-pointer"
+          onClick={() => setNextPage(nextPage - 1)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+            />
+          </svg>
+        </span>
+        {new Array(pageCount).fill(0).map((item, index) => (
+          // eslint-disable-next-line react/jsx-key
+          <span
+            onClick={() => setNextPage(index + 1)}
+            className="inline-block px-4 py-2 leading-none rounded cursor-pointer bg-slate-500 text-slate-900"
+          >
+            {index + 1}
+          </span>
+        ))}
+        <span
+          className="cursor-pointer"
+          onClick={() => setNextPage(nextPage + 1)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </span>
       </div>
     </div>
   );

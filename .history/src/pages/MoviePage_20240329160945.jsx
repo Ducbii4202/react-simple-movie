@@ -4,18 +4,13 @@ import { fetcher } from "../config";
 import MovieCard from "../components/movie/MovieCard";
 import { useEffect, useState } from "react";
 import useDebounce from "../hook/useDebounce";
-import ReactPaginate from "react-paginate";
 
 //https://api.themoviedb.org/3/search/movie
 
-const itemsPerPage = 20;
-
 const MoviePage = () => {
-  const [, setItemOffset] = useState(0);
-  const [nextPage, setNextPage] = useState(1);
   const [filter, setFilter] = useState("");
   const [url, setUrl] = useState(
-    `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0&page=${nextPage}`
+    "https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0"
   );
   const filterDebounce = useDebounce(filter, 500);
   const hanldeFilterChange = (e) => {
@@ -26,23 +21,15 @@ const MoviePage = () => {
   useEffect(() => {
     if (filterDebounce) {
       setUrl(
-        `https://api.themoviedb.org/3/search/movie?api_key=b732faa46cbc35a7c4297401454ffbb0&query=${filterDebounce}&page=${nextPage}`
+        `https://api.themoviedb.org/3/search/movie?api_key=b732faa46cbc35a7c4297401454ffbb0&query=${filterDebounce}`
       );
     } else {
       setUrl(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0&page=${nextPage}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=b732faa46cbc35a7c4297401454ffbb0`
       );
     }
-  }, [filterDebounce, nextPage]);
+  }, [filterDebounce]);
   const movies = data?.results || [];
-
-  if (!data || !data.total_results) return;
-  const pageCount = Math.ceil(data.total_results / itemsPerPage);
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.total_results;
-    setItemOffset(newOffset);
-    setNextPage(event.selected + 1);
-  };
   return (
     <div className="py-10 page-container">
       <div className="flex mb-10">
@@ -81,17 +68,11 @@ const MoviePage = () => {
             <MovieCard key={item.id} item={item}></MovieCard>
           ))}
       </div>
-      <div className="mt-10">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-          className="pagination"
-        />
+      <div className="flex items-center justify-center">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   );

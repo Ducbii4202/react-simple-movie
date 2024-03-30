@@ -36,10 +36,10 @@ const MoviePage = () => {
   }, [filterDebounce, nextPage]);
   const movies = data?.results || [];
 
-  if (!data || !data.total_results) return;
-  const pageCount = Math.ceil(data.total_results / itemsPerPage);
+  if (!data || !data.total_pages) return;
+  const pageCount = Math.ceil(data.total_pages / itemsPerPage);
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.total_results;
+    const newOffset = (event.selected * itemsPerPage) % data.total_pages;
     setItemOffset(newOffset);
     setNextPage(event.selected + 1);
   };
@@ -90,7 +90,6 @@ const MoviePage = () => {
           pageCount={pageCount}
           previousLabel="< previous"
           renderOnZeroPageCount={null}
-          className="pagination"
         />
       </div>
     </div>

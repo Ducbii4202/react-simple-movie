@@ -8,10 +8,11 @@ import ReactPaginate from "react-paginate";
 
 //https://api.themoviedb.org/3/search/movie
 
+// const pageCount = 5;
 const itemsPerPage = 20;
 
 const MoviePage = () => {
-  const [, setItemOffset] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
   const [nextPage, setNextPage] = useState(1);
   const [filter, setFilter] = useState("");
   const [url, setUrl] = useState(
@@ -36,10 +37,11 @@ const MoviePage = () => {
   }, [filterDebounce, nextPage]);
   const movies = data?.results || [];
 
-  if (!data || !data.total_results) return;
-  const pageCount = Math.ceil(data.total_results / itemsPerPage);
+  if (!data || !data.total_pages) return;
+  const pageCount = Math.ceil(data.total_pages / itemsPerPage);
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.total_results;
+    const newOffset = (event.selected * itemsPerPage) % data.total_pages;
+    // eslint-disable-next-line no-undef
     setItemOffset(newOffset);
     setNextPage(event.selected + 1);
   };
@@ -90,7 +92,6 @@ const MoviePage = () => {
           pageCount={pageCount}
           previousLabel="< previous"
           renderOnZeroPageCount={null}
-          className="pagination"
         />
       </div>
     </div>
