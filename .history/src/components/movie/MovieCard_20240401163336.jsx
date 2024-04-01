@@ -23,6 +23,12 @@ const MovieCard = ({ item }) => {
         <Button bgColor="secondary" onClick={() => navigate(`/movie/${id}`)}>
           Watch Now
         </Button>
+        {/* <button
+          onClick={() => navigate(`/movie/${id}`)}
+          className="w-full px-6 py-3 mt-auto capitalize rounded-lg bg-primary"
+        >
+          Watch now
+        </button> */}
       </div>
     </div>
   );

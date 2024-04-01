@@ -51,7 +51,9 @@ function BannerItem({ item }) {
             Drama
           </span>
         </div>
-        <Button onClick={() => navigate(`/movie/${id}`)}>Watch Now</Button>
+        <Button onClick={() => navigate(`/movie/${id}`)} className="w-auto ">
+          Watch Now
+        </Button>
       </div>
     </div>
   );

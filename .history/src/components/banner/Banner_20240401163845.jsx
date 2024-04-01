@@ -28,7 +28,7 @@ const Banner = () => {
 // eslint-disable-next-line react/prop-types
 function BannerItem({ item }) {
   // eslint-disable-next-line react/prop-types
-  const { title, poster_path, id } = item;
+  const { title, poster_path } = item;
   const navigate = useNavigate();
   return (
     <div className="relative w-full h-full rounded-lg">
@@ -51,7 +51,8 @@ function BannerItem({ item }) {
             Drama
           </span>
         </div>
-        <Button onClick={() => navigate(`/movie/${id}`)}>Watch Now</Button>
+        <Button onClick={() => } className="px-6 py-3 font-medium rounded-lg">Watch Now</Button>
+        
       </div>
     </div>
   );

@@ -51,7 +51,12 @@ function BannerItem({ item }) {
             Drama
           </span>
         </div>
-        <Button onClick={() => navigate(`/movie/${id}`)}>Watch Now</Button>
+        <Button
+          onClick={() => navigate(`/movie/${id}`)}
+          className="px-6 py-3 font-medium rounded-lg"
+        >
+          Watch Now
+        </Button>
       </div>
     </div>
   );
