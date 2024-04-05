@@ -3,6 +3,8 @@ import MovieCard from "./MovieCard";
 import useSWR from "swr";
 import { fetcher, tmdbAPI } from "../../config";
 
+//https://api.themoviedb.org/3/movie/now_playing?api_key=b732faa46cbc35a7c4297401454ffbb0
+
 // eslint-disable-next-line react/prop-types
 const MovieList = ({ type = "now_playing" }) => {
   const { data } = useSWR(tmdbAPI.getMovieList(type), fetcher);

@@ -11,7 +11,7 @@ const MovieCard = ({ item }) => {
   return (
     <div className="flex flex-col h-full p-3 text-white rounded-lg select-none movie-cart bg-slate-800">
       <img
-        src={tmdbAPI.image500(poster_path)}
+        src={tmdbAPI.image500(url)}
         alt=""
         className="w-full rounded-lg h-[250px] object-cover mb-5"
       />
