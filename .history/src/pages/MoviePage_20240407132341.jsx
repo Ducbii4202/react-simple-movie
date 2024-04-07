@@ -1,9 +1,9 @@
 import useSWR from "swr";
 
-import { fetcher, tmdbAPI } from "config";
+import { fetcher, tmdbAPI } from "../config";
 import MovieCard from "components/movie/MovieCard";
 import { useEffect, useState } from "react";
-import useDebounce from "hook/useDebounce";
+import useDebounce from "../hook/useDebounce";
 import ReactPaginate from "react-paginate";
 
 //https://api.themoviedb.org/3/search/movie
