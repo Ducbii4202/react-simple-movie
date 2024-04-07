@@ -5,7 +5,6 @@ import MovieCard, { MovieCardSkeleton } from "../components/movie/MovieCard";
 import { useEffect, useState } from "react";
 import useDebounce from "../hook/useDebounce";
 import ReactPaginate from "react-paginate";
-import { v4 } from "uuid";
 
 //https://api.themoviedb.org/3/search/movie
 
@@ -71,9 +70,8 @@ const MoviePage = () => {
       )} */}
       {loading && (
         <div className="grid grid-cols-4 gap-10">
-          {new Array(itemsPerPage).fill(0).map(() => (
-            <MovieCardSkeleton key={v4()}></MovieCardSkeleton>
-          ))}
+          {new Array(20).fill(0)}
+          <MovieCardSkeleton></MovieCardSkeleton>
         </div>
       )}
       <div className="grid grid-cols-4 gap-10">

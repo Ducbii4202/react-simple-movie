@@ -31,6 +31,7 @@
   .selected {
     @apply text-primary;
   }
+
   .skeleton {
     background-color: #eee;
     background-image: linear-gradient(

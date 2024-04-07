@@ -76,7 +76,7 @@ export const MovieCardSkeleton = () => {
         </div>
         <LoadingSkeleton
           width="100%"
-          height="45px"
+          height="40px"
           radius="6x"
         ></LoadingSkeleton>
       </div>

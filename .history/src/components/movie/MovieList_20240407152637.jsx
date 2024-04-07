@@ -13,7 +13,7 @@ const MovieList = ({ type = "now_playing" }) => {
 
   return (
     <div className="movie-list">
-      {isLoading && (
+      {!isLoading && (
         <>
           <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
             <SwiperSlide>
@@ -22,16 +22,14 @@ const MovieList = ({ type = "now_playing" }) => {
           </Swiper>
         </>
       )}
-      {!isLoading && (
-        <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
-          {movies.length > 0 &&
-            movies.map((item) => (
-              <SwiperSlide key={item.id}>
-                <MovieCard item={item}></MovieCard>
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      )}
+      <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
+        {movies.length > 0 &&
+          movies.map((item) => (
+            <SwiperSlide key={item.id}>
+              <MovieCard item={item}></MovieCard>
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </div>
   );
 };

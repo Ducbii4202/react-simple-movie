@@ -53,7 +53,7 @@ export default withErrorBoundary(MovieCard, {
   FallbackComponent,
 });
 
-export const MovieCardSkeleton = () => {
+const MovieCardSkeleton = () => {
   return (
     <div className="flex flex-col h-full p-3 text-white rounded-lg select-none movie-cart bg-slate-800">
       <LoadingSkeleton
@@ -74,11 +74,7 @@ export const MovieCardSkeleton = () => {
             <LoadingSkeleton width="30px" height="10px"></LoadingSkeleton>
           </span>
         </div>
-        <LoadingSkeleton
-          width="100%"
-          height="45px"
-          radius="6x"
-        ></LoadingSkeleton>
+        <LoadingSkeleton width="100%" height="40px"></LoadingSkeleton>
       </div>
     </div>
   );

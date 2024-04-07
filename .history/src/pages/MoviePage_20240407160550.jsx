@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import useDebounce from "../hook/useDebounce";
 import ReactPaginate from "react-paginate";
 import { v4 } from "uuid";
+import Button from "../components/button/Button";
+import useSWRInfinite from "swr/infinite";
 
 //https://api.themoviedb.org/3/search/movie
 
@@ -20,6 +22,13 @@ const MoviePage = () => {
   const hanldeFilterChange = (e) => {
     setFilter(e.target.value);
   };
+  const { data, error, mutate, size, setSize } = useSWRInfinite(
+    (index) =>
+      `https://api.github.com/repos/${repo}/issuse?per_page=${PAGE_SIZE}&page${
+        index + 1
+      }`,
+    fetcher
+  );
   const { data, error } = useSWR(url, fetcher);
   const loading = !data && !error;
   useEffect(() => {
@@ -83,7 +92,10 @@ const MoviePage = () => {
             <MovieCard key={item.id} item={item}></MovieCard>
           ))}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 text-center">
+        <Button></Button>
+      </div>
+      {/* <div className="mt-10">
         <ReactPaginate
           breakLabel="..."
           nextLabel="next >"
@@ -94,7 +106,7 @@ const MoviePage = () => {
           renderOnZeroPageCount={null}
           className="pagination"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

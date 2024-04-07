@@ -83,7 +83,10 @@ const MoviePage = () => {
             <MovieCard key={item.id} item={item}></MovieCard>
           ))}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 text-center">
+        <Button>Load More</Button>
+      </div>
+      {/* <div className="mt-10">
         <ReactPaginate
           breakLabel="..."
           nextLabel="next >"
@@ -94,7 +97,7 @@ const MoviePage = () => {
           renderOnZeroPageCount={null}
           className="pagination"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

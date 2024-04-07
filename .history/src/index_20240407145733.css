@@ -13,7 +13,6 @@
     max-width: 1280px;
     @apply mx-auto;
   }
-
   .movie-list .swiper-slide {
     width: 300px;
     height: auto;
@@ -22,7 +21,6 @@
     height: 100%;
   }
 }
-
 .pagination{
   display: flex;
   align-items: center;

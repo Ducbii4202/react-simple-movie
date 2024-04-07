@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import useDebounce from "../hook/useDebounce";
 import ReactPaginate from "react-paginate";
 import { v4 } from "uuid";
+import Button from "../components/button/Button";
+import useSWRInfinite from "swr/infinite";
 
 //https://api.themoviedb.org/3/search/movie
 
@@ -20,7 +22,10 @@ const MoviePage = () => {
   const hanldeFilterChange = (e) => {
     setFilter(e.target.value);
   };
-  const { data, error } = useSWR(url, fetcher);
+  const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
+    url,
+    fetcher
+  );
   const loading = !data && !error;
   useEffect(() => {
     if (filterDebounce) {
@@ -83,7 +88,10 @@ const MoviePage = () => {
             <MovieCard key={item.id} item={item}></MovieCard>
           ))}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 text-center">
+        <Button></Button>
+      </div>
+      {/* <div className="mt-10">
         <ReactPaginate
           breakLabel="..."
           nextLabel="next >"
@@ -94,7 +102,7 @@ const MoviePage = () => {
           renderOnZeroPageCount={null}
           className="pagination"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
