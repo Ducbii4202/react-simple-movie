@@ -1,5 +1,15 @@
-Technologies
+##Technologies
 
-Programming Languagel: HMML/CC, Javascript
+#Programming Languagel:
 
-Library: ReactJS, TailwindCSS, Sass
+-HMML/CSS
+
+-Javascript
+
+#Library
+
+-ReactJS
+
+-TailwindCSS
+
+-Sass
