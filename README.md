@@ -1,13 +1,13 @@
-### Simple Movie Website
+# Simple Movie Website
 
 ## Technologies
-# Programming Languagel:
+### Programming Languagel:
 
 - HTML/CSS
 
 - Javascript
 
-# Library
+### Library
 
 - ReactJS
 
