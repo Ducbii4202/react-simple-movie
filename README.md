@@ -1,15 +1,16 @@
-##Technologies
+### Simple Movie Website
 
-#Programming Languagel:
+## Technologies
+# Programming Languagel:
 
--HMML/CSS
+- HTML/CSS
 
--Javascript
+- Javascript
 
-#Library
+# Library
 
--ReactJS
+- ReactJS
 
--TailwindCSS
+- TailwindCSS
 
--Sass
+- Sass
